@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Web3 Starter Kit</title>
+  </head>
+  <body>
+    <h1>🧱 Web3 Starter Kit</h1>
+    <button id="connect">Connect Wallet</button>
+    <p id="status"></p>
+
+    <script>
+      const connectButton = document.getElementById("connect");
+      const statusText = document.getElementById("status");
+
+      connectButton.onclick = async () => {
+        if (window.ethereum) {
+          const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+          statusText.innerText = "Connected: " + accounts[0];
+        } else {
+          statusText.innerText = "MetaMask not found";
+        }
+      };
+    </script>
+  </body>
+</html>
